@@ -25,6 +25,9 @@
 
 ## 程式畫面截圖：
 ![1](https://github.com/yanting616/HW1/assets/164020703/f165ce07-b45c-4022-a08f-d68418b9d001)
+![2](https://github.com/yanting616/HW1/assets/164020703/61fc24b6-5678-4c80-a599-448f40558dfb)
+![3](https://github.com/yanting616/HW1/assets/164020703/ebda0a1b-44f6-4f2b-aaef-14a2cb88663d)
+![5](https://github.com/yanting616/HW1/assets/164020703/8b8807b1-33b0-4687-bc89-b8bda4e2eab7)
 
 
 ## 分工資訊：
