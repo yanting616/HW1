@@ -1,4 +1,141 @@
-## main.cpp
+main.cpp
+
+#include <iostream>
+using namespace std;
+#include "Circlefork.h" 
+
+int main() {
+    cout << "歡迎來到圈圈叉叉遊戲，第一位輸入者為O，第二為為X" << endl;
+    
+    Circlefork game;
+    game.play();
+    return 0;
+}
+
+Circlefork.cpp
+
+#include <iostream>
+#include "Circlefork.h"
+
+using namespace std;
+
+Circlefork::Circlefork() {
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            map[i][j] = ' ';
+        }
+    }
+    nowPlayer = 'O';
+}
+
+void Circlefork::showmap() {
+    for (int i = 0; i < 3; ++i) {
+        cout << " －－－－－－－－－" << endl;
+        for (int j = 0; j < 3; ++j) {
+            cout << "|  " << map[i][j] << "  ";
+        }
+        cout << "|" << endl;
+    }
+    cout << " －－－－－－－－－" << endl;
+}
+
+bool Circlefork::placePiece(int row, int col) {
+    if (row < 0 || row >= 3 || col < 0 || col >= 3 || map[row][col] != ' ') {
+        cout << "無效位置。" << endl;
+        return false;
+    }
+    map[row][col] = nowPlayer;
+    return true;
+}
+
+void Circlefork::switchPlayer() {
+    nowPlayer = (nowPlayer == 'O') ? 'X' : 'O';
+}
+
+bool Circlefork::winner() {
+    
+    for (int i = 0; i < 3; ++i) {
+        if (map[i][0] != ' ' && map[i][0] == map[i][1] && map[i][1] == map[i][2]) {
+            return true;
+        }
+    }
+    
+    for (int i = 0; i < 3; ++i) {
+        if (map[0][i] != ' ' && map[0][i] == map[1][i] && map[1][i] == map[2][i]) {
+            return true;
+        }
+    }
+    
+    if (map[0][0] != ' ' && map[0][0] == map[1][1] && map[1][1] == map[2][2]) {
+        return true;
+    }
+    
+    if (map[0][2] != ' ' && map[0][2] == map[1][1] && map[1][1] == map[2][0]) {
+        return true;
+    }
+    return false;
+}
+
+
+void Circlefork::play() {
+    int row, col;
+    showmap();
+    bool gameEnd = false; 
+    while (!gameEnd) {
+        cout << "(輸入 0 退出，輸入行列數 1-3)" << endl;
+        cin >> row;
+        if (row == 0) break;
+        cin >> col;
+        if (placePiece(row - 1, col - 1)) {
+            system("CLS");
+            showmap();
+            if (winner()) {
+                cout << nowPlayer << " 贏了。" << endl;
+                gameEnd = true; 
+            }
+            else {
+                switchPlayer();
+            }
+        }
+
+      
+        bool boardFull = true;
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                if (map[i][j] == ' ') {
+                    boardFull = false;
+                    break;
+                }
+            }
+            if (!boardFull) break;
+        }
+        if (boardFull && !winner()) {
+            cout << "平手。" << endl;
+            gameEnd = true;
+        }
+    }
+}
+
+Circlefork.h
+
+#ifndef CIRCLEFORK_H
+#define CIRCLEFORK_H
+
+class Circlefork {
+private:
+    char map[3][3];
+    char nowPlayer;
+
+public:
+    Circlefork();
+    void showmap();
+    bool placePiece(int row, int col);
+    void switchPlayer();
+    bool winner();
+    void play();
+};
+
+#endif
 
 
 
