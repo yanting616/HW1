@@ -31,7 +31,7 @@
 ![4](https://github.com/yanting616/HW1/assets/164020703/a63261c9-1873-4d34-a54a-85764b97f9d4)
 
 ## 分工資訊：
-劉彥廷:程式撰寫，README撰寫，ppt撰寫
+劉彥廷:程式撰寫，README撰寫，ppt撰寫，uml製作
 
 
 
