@@ -28,8 +28,6 @@
 ![2](https://github.com/yanting616/HW1/assets/164020703/ea66794c-aa98-4995-ac4d-ce0b302ac30d)
 ![3](https://github.com/yanting616/HW1/assets/164020703/f5a36f98-1d0c-4677-bc17-0c317ce202cc)
 ![4](https://github.com/yanting616/HW1/assets/164020703/a63261c9-1873-4d34-a54a-85764b97f9d4)
-[圈圈叉叉遊戲.pptx](https://github.com/yanting616/HW1/files/15259158/default.pptx)
-
 
 ## 分工資訊：
 劉彥廷:程式撰寫，README撰寫，ppt撰寫
