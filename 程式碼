@@ -1,0 +1,14 @@
+## main.cpp
+#include <iostream>
+using namespace std;
+#include "Circlefork.h" 
+
+int main() {
+    cout << "歡迎來到圈圈叉叉遊戲，第一位輸入者為O，第二為為X" << endl;
+    
+    Circlefork game;
+    game.play();
+    return 0;
+}
+
+
