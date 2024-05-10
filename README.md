@@ -3,9 +3,7 @@
 ## 成員資訊：劉彥廷、康宇翔、蔡耀德、陳佩妤
 
 ## 專題題目：圈圈叉叉遊戲 
-[圈圈叉叉遊戲.pptx]
-
-
+[圈圈叉叉遊戲.pptx](https://github.com/yanting616/HW1/files/15270748/default.pptx)
 
 ## 程式介紹：
 每個玩家輪流在九個格子中放置自己的符號，直到有一名玩家成功排成橫排、直排或斜排。
@@ -27,6 +25,12 @@
 ## 程式如何安裝執行：
 
 ## 程式畫面截圖：
+![1](https://github.com/yanting616/HW1/assets/164020703/056b5647-ae1c-46a8-8176-a1b5aaeb3c94)
+![2](https://github.com/yanting616/HW1/assets/164020703/69e3347f-a58b-4dd3-844f-23b42bebbdb1)
+![3](https://github.com/yanting616/HW1/assets/164020703/01054e3a-1d01-4bb1-b877-3ba55e4bb754)
+![4](https://github.com/yanting616/HW1/assets/164020703/945839de-f2c6-4670-b5be-80286a8e3783)
+![5](https://github.com/yanting616/HW1/assets/164020703/74087c17-30ea-4d1f-a7b0-47c54ecc91bf)
+![6](https://github.com/yanting616/HW1/assets/164020703/476f01ac-2d67-4b16-b988-6ef17efbf6b0)
 
 
 
