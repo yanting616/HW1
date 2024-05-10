@@ -2,7 +2,9 @@
 
 ## 成員資訊：劉彥廷、康宇翔、蔡耀德、陳佩妤
 
-## 專題題目：圈圈叉叉遊戲 [圈圈叉叉遊戲.pptx](https://github.com/yanting616/HW1/files/15259174/default.pptx)
+## 專題題目：圈圈叉叉遊戲 
+[圈圈叉叉遊戲.pptx](https://github.com/yanting616/HW1/files/15270575/default.pptx)
+
 
 
 ## 程式介紹：
@@ -25,10 +27,14 @@
 ## 程式如何安裝執行：
 
 ## 程式畫面截圖：
-![1](https://github.com/yanting616/HW1/assets/164020703/301c2dd9-e115-4d64-aaff-7dd8762d397b)
-![2](https://github.com/yanting616/HW1/assets/164020703/ea66794c-aa98-4995-ac4d-ce0b302ac30d)
-![3](https://github.com/yanting616/HW1/assets/164020703/f5a36f98-1d0c-4677-bc17-0c317ce202cc)
-![4](https://github.com/yanting616/HW1/assets/164020703/a63261c9-1873-4d34-a54a-85764b97f9d4)
+![1](https://github.com/yanting616/HW1/assets/164020703/32f63fce-9d48-4ed5-8e38-30b8a0e3454f)
+![2](https://github.com/yanting616/HW1/assets/164020703/972cf8d3-f9ae-430d-bc7c-96c400bdc47a)
+![3](https://github.com/yanting616/HW1/assets/164020703/e4d4e04e-f746-464c-a141-d4a967bb1268)
+![4](https://github.com/yanting616/HW1/assets/164020703/ffe87b8b-2922-447f-a991-388e78644a9e)
+![5](https://github.com/yanting616/HW1/assets/164020703/7de73e34-a5f0-488d-8fd3-4854e2a79628)
+![6](https://github.com/yanting616/HW1/assets/164020703/3ba358b1-d721-49ca-b3a7-575b5acb097d)
+
+
 
 ## 分工資訊：
 劉彥廷:程式撰寫，README撰寫，ppt撰寫，uml製作
