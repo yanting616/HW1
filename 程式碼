@@ -16,7 +16,6 @@ Circlefork.cpp
 
 #include <iostream>
 #include "Circlefork.h"
-
 using namespace std;
 
 Circlefork::Circlefork() {
@@ -39,7 +38,7 @@ void Circlefork::showmap() {
     cout << " －－－－－－－－－" << endl;
 }
 
-bool Circlefork::placePiece(int row, int col) {
+bool Circlefork::placePlayer(int row, int col) {
     if (row < 0 || row >= 3 || col < 0 || col >= 3 || map[row][col] != ' ') {
         cout << "無效位置。" << endl;
         return false;
@@ -52,7 +51,7 @@ void Circlefork::switchPlayer() {
     nowPlayer = (nowPlayer == 'O') ? 'X' : 'O';
 }
 
-bool Circlefork::winner() {
+bool Circlefork::winner() {//檢查玩家是否勝利
     
     for (int i = 0; i < 3; ++i) {
         if (map[i][0] != ' ' && map[i][0] == map[i][1] && map[i][1] == map[i][2]) {
@@ -86,7 +85,7 @@ void Circlefork::play() {
         cin >> row;
         if (row == 0) break;
         cin >> col;
-        if (placePiece(row - 1, col - 1)) {
+        if (placePlayer(row - 1, col - 1)) {
             system("CLS");
             showmap();
             if (winner()) {
@@ -116,23 +115,29 @@ void Circlefork::play() {
     }
 }
 
+
+
 Circlefork.h
 
 #ifndef CIRCLEFORK_H
 #define CIRCLEFORK_H
 
+#include <iostream>
+using namespace std;
+
 class Circlefork {
-private:
-    char map[3][3];
-    char nowPlayer;
 
 public:
     Circlefork();
     void showmap();
-    bool placePiece(int row, int col);
+    bool placePlayer(int row, int col);
     void switchPlayer();
     bool winner();
     void play();
+private:
+    char map[3][3];
+    char nowPlayer;
+
 };
 
 #endif
