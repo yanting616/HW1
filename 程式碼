@@ -1,116 +1,174 @@
 main.cpp
 
+#include "Circlefork.h"
 #include <iostream>
+
 using namespace std;
-#include "Circlefork.h" 
 
 int main() {
-    cout << "歡迎來到圈圈叉叉遊戲，第一位輸入者為O，第二為為X" << endl;
-    
+    cout << "歡迎來到圈圈叉叉遊戲，玩家一為X，玩家二為O" << endl;
+    cout << "按下 Enter 開始遊戲..." << endl;
+    cin.get(); // 等待玩家按下 Enter 
+
     Circlefork game;
-    game.play();
+    game.run();
     return 0;
 }
 
 Circlefork.cpp
 
-#include <iostream>
 #include "Circlefork.h"
-using namespace std;
+#include <conio.h>
 
+// 初始化
 Circlefork::Circlefork() {
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            map[i][j] = ' ';
+    currentPlayer = PLAYER_X;
+    initGame();
+}
+
+// 初始化遊戲
+void Circlefork::initGame() {
+    initgraph(BOARD_SIZE, BOARD_SIZE);  // 初始視窗
+    setbkmode(TRANSPARENT); // 設置透明背景模式
+    BeginBatchDraw(); // 開始批量繪圖
+
+    // 初始化棋盤
+    for (int i = 0; i < GRID_SIZE; ++i) {
+        for (int j = 0; j < GRID_SIZE; ++j) {
+            board[i][j] = NONE;
         }
     }
-    nowPlayer = 'O';
 }
 
-void Circlefork::showmap() {
-    for (int i = 0; i < 3; ++i) {
-        cout << " －－－－－－－－－" << endl;
-        for (int j = 0; j < 3; ++j) {
-            cout << "|  " << map[i][j] << "  ";
+// 繪製棋盤
+void Circlefork::drawBoard() {
+    setbkcolor(BLACK);  // 設置背景顏色
+    cleardevice();  // 清除螢幕
+    setlinecolor(WHITE);  // 設置線條顏色
+
+    // 棋盤格線
+    for (int i = 1; i < GRID_SIZE; ++i) {
+        line(i * CELL_SIZE, 0, i * CELL_SIZE, BOARD_SIZE);
+        line(0, i * CELL_SIZE, BOARD_SIZE, i * CELL_SIZE);
+    }
+
+    // 繪製玩家的圈叉
+    for (int i = 0; i < GRID_SIZE; ++i) {
+        for (int j = 0; j < GRID_SIZE; ++j) {
+            int x = j * CELL_SIZE;
+            int y = i * CELL_SIZE;
+            if (board[i][j] == PLAYER_X) {
+                setlinecolor(RED);  // 設置線條顏色為紅色
+                setlinestyle(PS_SOLID | PS_ENDCAP_FLAT, 4); // 設置實線粗細4
+                // 繪製叉
+                line(x + 20, y + 20, x + CELL_SIZE - 20, y + CELL_SIZE - 20);
+                line(x + CELL_SIZE - 20, y + 20, x + 20, y + CELL_SIZE - 20);
+            }
+            else if (board[i][j] == PLAYER_O) {
+                setlinecolor(BLUE);  // 設置線條顏色為藍色
+                setlinestyle(PS_SOLID | PS_ENDCAP_FLAT, 4);
+                // 繪製圈
+                circle(x + CELL_SIZE / 2, y + CELL_SIZE / 2, CELL_SIZE / 2 - 20);
+            }
         }
-        cout << "|" << endl;
     }
-    cout << " －－－－－－－－－" << endl;
+
+    FlushBatchDraw(); // 刷新繪圖，將後台緩衝區內容顯示到前台(防止螢幕閃爍)
 }
 
-bool Circlefork::placePlayer(int row, int col) {
-    if (row < 0 || row >= 3 || col < 0 || col >= 3 || map[row][col] != ' ') {
-        cout << "無效位置。" << endl;
-        return false;
-    }
-    map[row][col] = nowPlayer;
-    return true;
-}
-
-void Circlefork::switchPlayer() {
-    nowPlayer = (nowPlayer == 'O') ? 'X' : 'O';
-}
-
-bool Circlefork::winner() {//檢查玩家是否勝利
-    
-    for (int i = 0; i < 3; ++i) {
-        if (map[i][0] != ' ' && map[i][0] == map[i][1] && map[i][1] == map[i][2]) {
+// 檢查指定玩家是否獲勝
+bool Circlefork::checkWin(Player player) {
+    // 檢查行
+    for (int i = 0; i < GRID_SIZE; ++i) {
+        if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
             return true;
         }
     }
-    
-    for (int i = 0; i < 3; ++i) {
-        if (map[0][i] != ' ' && map[0][i] == map[1][i] && map[1][i] == map[2][i]) {
+    // 檢查列
+    for (int j = 0; j < GRID_SIZE; ++j) {
+        if (board[0][j] == player && board[1][j] == player && board[2][j] == player) {
             return true;
         }
     }
-    
-    if (map[0][0] != ' ' && map[0][0] == map[1][1] && map[1][1] == map[2][2]) {
+    // 檢查對角線
+    if (board[0][0] == player && board[1][1] == player && board[2][2] == player) {
         return true;
     }
-    
-    if (map[0][2] != ' ' && map[0][2] == map[1][1] && map[1][1] == map[2][0]) {
+    if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
         return true;
     }
     return false;
 }
 
+// 檢查是否平局
+bool Circlefork::isDraw() {
+    for (int i = 0; i < GRID_SIZE; ++i) {
+        for (int j = 0; j < GRID_SIZE; ++j) {
+            if (board[i][j] == NONE) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
-void Circlefork::play() {
-    int row, col;
-    showmap();
-    bool gameEnd = false; 
-    while (!gameEnd) {
-        cout << "(輸入 0 退出，輸入行列數 1-3)" << endl;
-        cin >> row;
-        if (row == 0) break;
-        cin >> col;
-        if (placePlayer(row - 1, col - 1)) {
-            system("CLS");
-            showmap();
-            if (winner()) {
-                cout << nowPlayer << " 贏了。" << endl;
-                gameEnd = true; 
+// 處理點擊事件
+void Circlefork::processClick(int x, int y) {
+    int row = y / CELL_SIZE;  // 計算點擊的行
+    int col = x / CELL_SIZE;  // 計算點擊的列
+
+    // 如果點擊位置在棋盤內且尚未佔用
+    if (row < GRID_SIZE && col < GRID_SIZE && board[row][col] == NONE) {
+        board[row][col] = currentPlayer;  // 更新棋盤
+
+        // 檢查當前玩家是否獲勝
+        if (checkWin(currentPlayer)) {
+            drawBoard();
+            // 彈出訊息框顯示獲勝訊息 詢問
+            int result = MessageBox(GetHWnd(), currentPlayer == PLAYER_X ? L"Player X wins! Play again?" : L"Player O wins! Play again?", L"Game Over", MB_YESNO);
+            if (result == IDYES) {
+                initGame(); // 重置遊戲
             }
             else {
-                switchPlayer();
+                closegraph(); // 關閉圖形模式
+                exit(0); // 退出程式
             }
+        }
+        else if (isDraw()) {
+            drawBoard();
+            // 彈出訊息框顯示平局訊息 詢問
+            int result = MessageBox(GetHWnd(), L"It's a draw! Play again?", L"Game Over", MB_YESNO);
+            if (result == IDYES) {
+                initGame(); // 重置遊戲
+            }
+            else {
+                closegraph(); // 關閉圖形模式
+                exit(0); // 退出程式
+            }
+        }
+        else {
+            // 切換玩家
+            currentPlayer = (currentPlayer == PLAYER_X) ? PLAYER_O : PLAYER_X;
+        }
+    }
+}
+
+// 遊戲主循環
+void Circlefork::run() {
+    while (true) {
+        drawBoard();  // 繪製棋盤
+
+        if (_kbhit()) { // 檢查是否按鍵輸入
+            _getch(); // 讀取並丟棄
         }
 
-      
-        bool boardFull = true;
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < 3; ++j) {
-                if (map[i][j] == ' ') {
-                    boardFull = false;
-                    break;
-                }
+        // 檢查是否有滑鼠點擊
+        if (MouseHit()) {
+            MOUSEMSG msg = GetMouseMsg();
+
+            if (msg.uMsg == WM_LBUTTONDOWN) {     // 如果是左鍵點擊
+                processClick(msg.x, msg.y);  // 處理點擊事件
             }
-            if (!boardFull) break;
-        }
-        if (boardFull && !winner()) {
-            cout << "平手。" << endl;
-            gameEnd = true;
         }
     }
 }
@@ -121,26 +179,32 @@ Circlefork.h
 
 #ifndef CIRCLEFORK_H
 #define CIRCLEFORK_H
+#include <graphics.h>
 
-#include <iostream>
-using namespace std;
+const int GRID_SIZE = 3; // 3x3
+const int CELL_SIZE = 250; // 格子的大小
+const int BOARD_SIZE = GRID_SIZE * CELL_SIZE; // 棋盤大小
 
+enum Player { NONE, PLAYER_X, PLAYER_O };
+
+// Circlefork 類別
 class Circlefork {
-
 public:
-    Circlefork();
-    void showmap();
-    bool placePlayer(int row, int col);
-    void switchPlayer();
-    bool winner();
-    void play();
-private:
-    char map[3][3];
-    char nowPlayer;
+    Circlefork(); // 構造函式
+    void initGame(); // 初始化遊戲
+    void drawBoard(); // 繪製棋盤
+    bool checkWin(Player player); // 檢查是否獲勝
+    bool isDraw(); // 檢查是否平局
+    void processClick(int x, int y); // 處理點擊事件
+    void run(); // 主循環
 
+private:
+    Player board[GRID_SIZE][GRID_SIZE]; // 棋盤
+    Player currentPlayer; // 當前玩家
 };
 
 #endif
+
 
 
 
