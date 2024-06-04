@@ -3,8 +3,7 @@
 ## 成員資訊：劉彥廷、康宇翔、蔡耀德、陳佩妤
 
 ## 專題題目：圈圈叉叉遊戲 
-[圈圈叉叉遊戲.pptx](https://github.com/user-attachments/files/15543819/default.pptx)
-
+[圈圈叉叉遊戲 .pptx](https://github.com/user-attachments/files/15543926/default.pptx)
 
 ## 程式介紹：
 每個玩家輪流在九個格子中放置自己的符號，直到有一名玩家成功排成橫排、直排或斜排。
