@@ -3,7 +3,7 @@
 ## 成員資訊：劉彥廷、康宇翔、蔡耀德、陳佩妤
 
 ## 專題題目：圈圈叉叉遊戲 
-[圈圈叉叉遊戲.pptx](https://github.com/yanting616/HW1/files/15308751/default.pptx)
+[圈圈叉叉遊戲.pptx](https://github.com/user-attachments/files/15543819/default.pptx)
 
 
 ## 程式介紹：
