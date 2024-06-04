@@ -28,12 +28,7 @@ https://easyx.cn/
 下載安裝後直接在 Visual Studio 使用
 
 ## 程式畫面截圖：
-![1](https://github.com/yanting616/HW1/assets/164020703/056b5647-ae1c-46a8-8176-a1b5aaeb3c94)
-![2](https://github.com/yanting616/HW1/assets/164020703/69e3347f-a58b-4dd3-844f-23b42bebbdb1)
-![3](https://github.com/yanting616/HW1/assets/164020703/01054e3a-1d01-4bb1-b877-3ba55e4bb754)
-![4](https://github.com/yanting616/HW1/assets/164020703/945839de-f2c6-4670-b5be-80286a8e3783)
-![5](https://github.com/yanting616/HW1/assets/164020703/74087c17-30ea-4d1f-a7b0-47c54ecc91bf)
-![6](https://github.com/yanting616/HW1/assets/164020703/476f01ac-2d67-4b16-b988-6ef17efbf6b0)
+
 main.cpp  
 <br>
 ![螢幕擷取畫面 2024-06-04 135634](https://github.com/yanting616/HW1/assets/164312804/d3824419-a581-433c-aad4-e4b8dde931e0)
